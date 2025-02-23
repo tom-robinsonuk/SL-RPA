@@ -10,7 +10,9 @@ window.addEventListener('DOMContentLoaded', () => {
     elements.forEach(el => {
         let path = el.tagName.toLowerCase();
         if (el.id) path += `#${el.id}`;
-        if (el.className) path += `.${el.className.split(' ').join('.')}`;
+        if (typeof el.className === 'string' && el.className.trim().length > 0) {
+            path += `.${el.className.split(/\s+/).join('.')}`;
+        }
         accessors.push(path);
     });
 
